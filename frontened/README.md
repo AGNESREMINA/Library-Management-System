@@ -1,41 +1,41 @@
-Bibliotheca - Library Management System
+## Bibliotheca - Library Management System
 
 A beautiful, modern library management system built with vanilla HTML, CSS, and JavaScript. Features a sophisticated design with full CRUD operations for books, members, and transactions.
 
 ## Features
 
-### 📊 Dashboard
+### Dashboard
 - Real-time statistics (total books, active members, borrowed books, overdue items)
 - Recent activity feed
 - Popular books tracker
 - Elegant data visualization
 
-### 📖 Book Management
+###  Book Management
 - Add, edit, and delete books
 - Search and filter by category, status, author, or ISBN
 - Track book availability
 - ISBN-based cataloging
 
-### 👥 Member Management
+###  Member Management
 - Register and manage library members
 - Track borrowing history
 - Active/Inactive member status
 - Member search and filtering
 
-### 🔄 Transaction System
+###  Transaction System
 - Issue and return books
 - Automatic overdue detection
 - Transaction history
 - Due date tracking
 - Borrowing limits enforcement
 
-### ⚙️ Settings
+###  Settings
 - Configure library information
 - Set borrowing rules (max books, loan period)
 - Manage late fees
 - Reset demo data
 
-## 🎨 Design Features
+##  Design Features
 
 - **Aesthetic Design**: Sophisticated library-themed color palette with gold accents
 - **Responsive Layout**: Works seamlessly on desktop, tablet, and mobile
@@ -44,7 +44,7 @@ A beautiful, modern library management system built with vanilla HTML, CSS, and 
 - **Data Persistence**: Uses localStorage to save all data
 - **Toast Notifications**: User-friendly feedback system
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 library-management-system/
@@ -57,7 +57,7 @@ library-management-system/
 └── FILE_STRUCTURE.md  # Detailed file structure guide
 ```
 
-## 🚀 Quick Start
+##  Quick Start
 
 1. **Download the project files**
    - Download all files to a folder on your computer
@@ -71,14 +71,14 @@ library-management-system/
    - Navigate through different sections using the sidebar
    - Try adding books, members, and creating transactions
 
-## 💻 Technology Stack
+##  Technology Stack
 
 - **HTML5**: Semantic markup
 - **CSS3**: Modern styling with CSS Grid, Flexbox, animations
 - **Vanilla JavaScript**: ES6+ features, no frameworks
 - **LocalStorage**: Client-side data persistence
 
-## 🎯 Usage Guide
+##  Usage Guide
 
 ### Adding a Book
 1. Click "Books" in the sidebar
@@ -130,21 +130,21 @@ initializeSampleData() {
 }
 ```
 
-## 📱 Browser Support
+##  Browser Support
 
 - ✅ Chrome (latest)
 - ✅ Firefox (latest)
 - ✅ Safari (latest)
 - ✅ Edge (latest)
 
-## 🐛 Known Limitations
+##  Known Limitations
 
 - Data is stored in browser localStorage (cleared when cache is cleared)
 - No backend/database integration (client-side only)
 - No authentication system
 - Single-user application
 
-## 🔮 Future Enhancements
+##  Future Enhancements
 
 - Export data to CSV/PDF
 - Print book labels and member cards
@@ -154,15 +154,15 @@ initializeSampleData() {
 - Multi-language support
 - Dark mode toggle
 
-## 📄 License
+##  License
 
 This project is open source and available for educational purposes.
 
-## 🤝 Contributing
+##  Contributing
 
 Feel free to fork, modify, and use this project for your own purposes!
 
-## 📧 Support
+##  Support
 
 For questions or issues, please refer to the documentation files or modify the code to suit your needs.
 
