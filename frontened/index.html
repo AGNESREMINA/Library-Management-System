@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bibliotheca - Library Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-texture"></div>
+    <div class="bg-gradient"></div>
+    
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">☘︎</div>
+                <h1>Bibliotheca</h1>
+            </div>
+            
+            <nav class="nav-menu">
+                <button class="nav-item active" data-view="dashboard">
+                    <span class="nav-icon">🏠︎</span>
+                    <span>Dashboard</span>
+                </button>
+                <button class="nav-item" data-view="books">
+                    <span class="nav-icon">🕮</span>
+                    <span>Books</span>
+                </button>
+                <button class="nav-item" data-view="members">
+                    <span class="nav-icon">𖨆</span>
+                    <span>Members</span>
+                </button>
+                <button class="nav-item" data-view="transactions">
+                    <span class="nav-icon">⇄</span>
+                    <span>Transactions</span>
+                </button>
+                <button class="nav-item" data-view="settings">
+                    <span class="nav-icon">☰</span>
+                    <span>Settings</span>
+                </button>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="user-avatar">AL</div>
+                    <div class="user-info">
+                        <div class="user-name">Admin</div>
+                        <div class="user-role">Librarian</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Dashboard View -->
+            <section id="dashboard" class="view active">
+                <header class="page-header">
+                    <div>
+                        <h2 class="page-title">Dashboard</h2>
+                        <p class="page-subtitle">Welcome back, here's what's happening today</p>
+                    </div>
+                    <button class="btn-primary" id="quickAddBtn">
+                        <span>+ Quick Add</span>
+                    </button>
+                </header>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon books">🕮</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="totalBooks">8</div>
+                            <div class="stat-label">Total Books</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon members">𖨆</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="totalMembers">0</div>
+                            <div class="stat-label">Active Members</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon borrowed">𓂃✍︎</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="borrowedBooks">0</div>
+                            <div class="stat-label">Books Borrowed</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon overdue">⚠︎</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="overdueBooks">0</div>
+                            <div class="stat-label">Overdue</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-content">
+                    <div class="recent-activities">
+                        <h3 class="section-title">Recent Activities</h3>
+                        <div id="recentActivitiesList" class="activities-list">
+                            <!-- Activities will be populated here -->
+                        </div>
+                    </div>
+                    
+                    <div class="popular-books">
+                        <h3 class="section-title">Popular Books</h3>
+                        <div id="popularBooksList" class="popular-list">
+                            <!-- Popular books will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Books View -->
+            <section id="books" class="view">
+                <header class="page-header">
+                    <div>
+                        <h2 class="page-title">Books Collection</h2>
+                        <p class="page-subtitle">Manage your library inventory</p>
+                    </div>
+                    <button class="btn-primary" id="addBookBtn">
+                        <span>+ Add Book</span>
+                    </button>
+                </header>
+
+                <div class="filters-bar">
+                    <input type="text" id="bookSearch" class="search-input" placeholder="Search books by title, author, or ISBN...">
+                    <select id="bookCategoryFilter" class="filter-select">
+                        <option value="">All Categories</option>
+                        <option value="Fiction">Fiction</option>
+                        <option value="Non-Fiction">Non-Fiction</option>
+                        <option value="Science">Science</option>
+                        <option value="History">History</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Biography">Biography</option>
+                    </select>
+                    <select id="bookStatusFilter" class="filter-select">
+                        <option value="">All Status</option>
+                        <option value="available">Available</option>
+                        <option value="borrowed">Borrowed</option>
+                    </select>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ISBN</th>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="booksTableBody">
+                            <!-- Books will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Members View -->
+            <section id="members" class="view">
+                <header class="page-header">
+                    <div>
+                        <h2 class="page-title">Members</h2>
+                        <p class="page-subtitle">Manage library members</p>
+                    </div>
+                    <button class="btn-primary" id="addMemberBtn">
+                        <span>+ Add Member</span>
+                    </button>
+                </header>
+
+                <div class="filters-bar">
+                    <input type="text" id="memberSearch" class="search-input" placeholder="Search members by name, email, or ID...">
+                    <select id="memberStatusFilter" class="filter-select">
+                        <option value="">All Members</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Member ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Books Borrowed</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="membersTableBody">
+                            <!-- Members will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Transactions View -->
+            <section id="transactions" class="view">
+                <header class="page-header">
+                    <div>
+                        <h2 class="page-title">Transactions</h2>
+                        <p class="page-subtitle">Borrow and return history</p>
+                    </div>
+                    <button class="btn-primary" id="newTransactionBtn">
+                        <span>+ New Transaction</span>
+                    </button>
+                </header>
+
+                <div class="filters-bar">
+                    <input type="text" id="transactionSearch" class="search-input" placeholder="Search by book or member...">
+                    <select id="transactionTypeFilter" class="filter-select">
+                        <option value="">All Transactions</option>
+                        <option value="borrowed">Borrowed</option>
+                        <option value="returned">Returned</option>
+                        <option value="overdue">Overdue</option>
+                    </select>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Transaction ID</th>
+                                <th>Book</th>
+                                <th>Member</th>
+                                <th>Borrow Date</th>
+                                <th>Due Date</th>
+                                <th>Return Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionsTableBody">
+                            <!-- Transactions will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Settings View -->
+            <section id="settings" class="view">
+                <header class="page-header">
+                    <div>
+                        <h2 class="page-title">Settings</h2>
+                        <p class="page-subtitle">Configure your library system</p>
+                    </div>
+                </header>
+
+                <div class="settings-container">
+                    <div class="settings-card">
+                        <h3>Library Information</h3>
+                        <div class="form-group">
+                            <label>Library Name</label>
+                            <input type="text" id="libraryName" value="Bibliotheca Central Library">
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" id="libraryAddress" value="123 Book Street, Reading City">
+                        </div>
+                        <div class="form-group">
+                            <label>Contact Email</label>
+                            <input type="email" id="libraryEmail" value="info@bibliotheca.library">
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>Borrowing Rules</h3>
+                        <div class="form-group">
+                            <label>Maximum Books Per Member</label>
+                            <input type="number" id="maxBooks" value="5">
+                        </div>
+                        <div class="form-group">
+                            <label>Loan Period (Days)</label>
+                            <input type="number" id="loanPeriod" value="14">
+                        </div>
+                        <div class="form-group">
+                            <label>Late Fee Per Day ($)</label>
+                            <input type="number" id="lateFee" value="0.50" step="0.10">
+                        </div>
+                    </div>
+
+                    <div class="settings-actions">
+                        <button class="btn-primary" id="saveSettingsBtn">Save Settings</button>
+                        <button class="btn-secondary" id="resetDataBtn">Reset Demo Data</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal for Adding/Editing Books -->
+    <div id="bookModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="bookModalTitle">Add New Book</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form id="bookForm" class="modal-form">
+                <div class="form-group">
+                    <label>ISBN *</label>
+                    <input type="text" id="bookISBN" required>
+                </div>
+                <div class="form-group">
+                    <label>Title *</label>
+                    <input type="text" id="bookTitle" required>
+                </div>
+                <div class="form-group">
+                    <label>Author *</label>
+                    <input type="text" id="bookAuthor" required>
+                </div>
+                <div class="form-group">
+                    <label>Category *</label>
+                    <select id="bookCategory" required>
+                        <option value="">Select Category</option>
+                        <option value="Fiction">Fiction</option>
+                        <option value="Non-Fiction">Non-Fiction</option>
+                        <option value="Science">Science</option>
+                        <option value="History">History</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Biography">Biography</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Publisher</label>
+                    <input type="text" id="bookPublisher">
+                </div>
+                <div class="form-group">
+                    <label>Publication Year</label>
+                    <input type="number" id="bookYear" min="1800" max="2025">
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="btn-primary">Save Book</button>
+                    <button type="button" class="btn-secondary modal-cancel">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for Adding/Editing Members -->
+    <div id="memberModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="memberModalTitle">Add New Member</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form id="memberForm" class="modal-form">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" id="memberName" required>
+                </div>
+                <div class="form-group">
+                    <label>Email *</label>
+                    <input type="email" id="memberEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone *</label>
+                    <input type="tel" id="memberPhone" required>
+                </div>
+                <div class="form-group">
+                    <label>Address</label>
+                    <textarea id="memberAddress" rows="3"></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="btn-primary">Save Member</button>
+                    <button type="button" class="btn-secondary modal-cancel">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for New Transaction -->
+    <div id="transactionModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>New Transaction</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form id="transactionForm" class="modal-form">
+                <div class="form-group">
+                    <label>Select Book *</label>
+                    <select id="transactionBook" required>
+                        <option value="">Choose a book</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Select Member *</label>
+                    <select id="transactionMember" required>
+                        <option value="">Choose a member</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Due Date *</label>
+                    <input type="date" id="transactionDueDate" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="btn-primary">Issue Book</button>
+                    <button type="button" class="btn-secondary modal-cancel">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
