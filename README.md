@@ -7,3 +7,6 @@ A modern library management system built with HTML, CSS and JavaScript. Features
 - Member Management
 - Transaction System
 - Settings
+
+## Live Demo
+https://agnesremina.github.io/Library-Management-System/
